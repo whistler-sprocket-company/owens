@@ -1,4 +1,4 @@
-name: Mono Main
+name: Owens Main
 
 on: [push]
 
@@ -19,3 +19,13 @@ jobs:
 
       - name: build
         run: dotnet build --no-restore
+
+      - name: publish
+        run: dotnet publish --no-build --no-restore -o ./dist
+
+      - name: deploy
+        uses: azure/webapps-deploy@v3
+        with:
+          package: "./dist"
+          app-name: "asc-owens-app-dev"
+          publish-profile: ${{ secrets.owens_dev }}
