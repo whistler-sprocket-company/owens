@@ -19,7 +19,10 @@ jobs:
         with:
           files: 'source/Owens.API/appsettings.json'
         env:
-          ConnectionStrings.Database: ${{ secrets.owens_dev_db }} 
+          ConnectionStrings.Database: ${{ secrets.owens_dev_db }}
+
+      - name: confirm-file
+        run: echo source/Owens.API/appsettings.json
           
       - name: build
         run: dotnet build -c Release
