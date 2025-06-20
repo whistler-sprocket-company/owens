@@ -21,8 +21,14 @@ jobs:
         env:
           ConnectionStrings.Database: ${{ secrets.owens_dev_db }}
 
-      - name: confirm-file
-        run: echo "$source/Owens.API/appsettings.json"
+      - name: get properties
+        id: json_properties
+        uses: ActionsTools/read-json-action@main
+        with:
+          file_path: "source/Owens.API/appsettings.json"
+
+      - run: |
+          echo ${{steps.json_properties.ConnectionStrings.Database}}
           
       - name: build
         run: dotnet build -c Release
