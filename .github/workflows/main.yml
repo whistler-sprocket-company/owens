@@ -21,7 +21,7 @@ jobs:
         run: dotnet build --no-restore
 
       - name: publish
-        run: dotnet publish --no-build --no-restore -o ./dist
+        run: dotnet publish --no-build --property:PublishDir=./dist
 
       - name: deploy
         uses: azure/webapps-deploy@v3
