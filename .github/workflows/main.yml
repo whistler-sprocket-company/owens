@@ -19,6 +19,9 @@ jobs:
 
       - name: build
         run: dotnet build --no-restore -c Release
+      
+      - name: test
+        run: dotnet test
 
       - name: publish
         run: dotnet publish --no-build -c Release --property:PublishDir=./dist source/Owens.API/Owens.API.csproj
