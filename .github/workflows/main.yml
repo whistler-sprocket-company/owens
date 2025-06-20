@@ -28,7 +28,7 @@ jobs:
           file_path: "source/Owens.API/appsettings.json"
 
       - run: |
-          echo ${{steps.json_properties.ConnectionStrings.Database}}
+          echo ${{steps.json_properties.outputs.ConnectionStrings.Database}}
           
       - name: build
         run: dotnet build -c Release
