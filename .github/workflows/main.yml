@@ -21,7 +21,7 @@ jobs:
         run: dotnet build --no-restore
 
       - name: publish
-        run: dotnet publish --no-build --property:PublishDir=./dist
+        run: dotnet publish --no-build --property:PublishDir=./dist source/Owens.API/Owens.API.csproj
 
       - name: deploy
         uses: azure/webapps-deploy@v3
