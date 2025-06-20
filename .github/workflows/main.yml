@@ -19,9 +19,8 @@ jobs:
         with:
           files: 'source/Owens.API/appsettings.json'
         env:
-          Var1: "ConnectionStrings.Database"
-          SECRET: ${{ secrets.owens_dev_db }}    
-
+          ConnectionStrings.Database: ${{ secrets.owens_dev_db }} 
+          
       - name: build
         run: dotnet build -c Release
       
