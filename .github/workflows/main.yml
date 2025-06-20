@@ -22,7 +22,7 @@ jobs:
           ConnectionStrings.Database: ${{ secrets.owens_dev_db }}
 
       - name: confirm-file
-        run: echo source/Owens.API/appsettings.json
+        run: echo "$source/Owens.API/appsettings.json"
           
       - name: build
         run: dotnet build -c Release
