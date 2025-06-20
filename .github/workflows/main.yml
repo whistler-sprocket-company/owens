@@ -14,11 +14,8 @@ jobs:
         with:
           dotnet-version: '9.x.x'
 
-      - name: restore
-        run: dotnet restore
-
       - name: build
-        run: dotnet build --no-restore -c Release
+        run: dotnet build -c Release
       
       - name: test
         run: dotnet test
@@ -29,6 +26,6 @@ jobs:
       - name: deploy
         uses: azure/webapps-deploy@v3
         with:
-          package: "./dist"
+          package: "source/Owens.API/dist/"
           app-name: "asc-owens-app-dev"
           publish-profile: ${{ secrets.owens_dev }}
