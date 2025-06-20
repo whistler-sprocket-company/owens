@@ -14,6 +14,14 @@ jobs:
         with:
           dotnet-version: '9.x.x'
 
+      - name: Replace multiple files
+        uses: microsoft/variable-substitution@v1 
+        with:
+          files: 'source/Owens.API/appsettings.json'
+        env:
+          Var1: "ConnectionStrings.Database"
+          SECRET: ${{ secrets.owens_dev_db }}    
+
       - name: build
         run: dotnet build -c Release
       
