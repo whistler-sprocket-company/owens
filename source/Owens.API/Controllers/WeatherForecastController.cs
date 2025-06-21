@@ -6,6 +6,23 @@ namespace Owens.API.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private readonly ApplicationContext _context;
+
+        public WeatherForecastController(ApplicationContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost]
+        public ActionResult Index()
+        {
+            _context.WeatherForecasts.Add(new WeatherForecast());
+
+            var result = _context.SaveChanges();
+
+            return Ok(result);
+        }
+
         [HttpGet(Name = "GetWeatherForecast")]
         [ProducesResponseType<IEnumerable<string>>(StatusCodes.Status200OK)]
         public IActionResult Get()

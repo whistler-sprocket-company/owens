@@ -11,6 +11,7 @@ namespace Owens.API
 
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
+            builder.Services.AddSqlServer<ApplicationContext>(builder.Configuration.GetConnectionString("Database"));
 
             var app = builder.Build();
 
