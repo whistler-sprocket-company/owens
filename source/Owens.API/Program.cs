@@ -1,20 +1,20 @@
 
 
 
+using Owens.Infrastructure.DataAccess.Common;
 using Scalar.AspNetCore;
 
 namespace Owens.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
-            builder.Services.AddSqlServer<ApplicationContext>("Server=tcp:acme-sprocket-co.database.windows.net,1433;Initial Catalog=owens-dev;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=\"Active Directory Default\";");
-
+            builder.Services.AddSqlServer<ApplicationContext>(builder.Configuration.GetConnectionString("Database"));
 
             var app = builder.Build();
 
@@ -27,7 +27,7 @@ namespace Owens.API
 
             app.MapControllers();
 
-            app.Run();
+            await app.RunAsync();
         }
     }
 }

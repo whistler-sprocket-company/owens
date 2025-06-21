@@ -1,4 +1,4 @@
-namespace Owens.API
+namespace Owens.Infrastructure.DataAccess.Common
 {
     public class WeatherForecast
     {
