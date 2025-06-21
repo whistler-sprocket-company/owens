@@ -16,11 +16,18 @@ namespace Owens.API.Controllers
         [HttpPost]
         public ActionResult Index()
         {
-            _context.WeatherForecasts.Add(new WeatherForecast());
+            try
+            {
+                _context.WeatherForecasts.Add(new WeatherForecast());
 
-            var result = _context.SaveChanges();
+                var result = _context.SaveChanges();
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
