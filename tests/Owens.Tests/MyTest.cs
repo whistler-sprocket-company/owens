@@ -1,7 +1,7 @@
 ﻿namespace Owens.Tests
 {
     [TestClass]
-    public sealed class Test1
+    public sealed class MyTest
     {
         [TestMethod]
         public void TestMethod1()
