@@ -17,7 +17,7 @@ namespace Owens.API
             builder.Services.AddOpenApi();
 
             Debug.Print(builder.Configuration.GetConnectionString("Database"));
-            builder.Services.AddSqlServer<ApplicationContext>("Server=tcp:acme-sprocket-co.database.windows.net,1433;Initial Catalog=owens-dev;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=\"Active Directory Default\";");
+            builder.Services.AddSqlServer<ApplicationContext>(builder.Configuration.GetConnectionString("Database"));
 
             var app = builder.Build();
 
