@@ -8,10 +8,18 @@ namespace Owens.API.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private readonly ApplicationContext _context;
+        private readonly IConfiguration _configuration;
 
-        public WeatherForecastController(ApplicationContext context)
+        public WeatherForecastController(ApplicationContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
+        }
+
+        [HttpGet("conn-string")]
+        public IActionResult ConnString()
+        {
+            return Ok(_configuration.GetConnectionString("Database"));
         }
 
         [HttpPost]
